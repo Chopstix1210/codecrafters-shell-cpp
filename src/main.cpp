@@ -1,3 +1,4 @@
+#include <cstring>
 #include <iostream>
 #include <string>
 
@@ -8,10 +9,11 @@ int main() {
 
   std::string command;
 
-  std::cout << "$ ";
-  std::getline(std::cin, command);
+  while (true) {
+    std::cout << "$ ";
+    std::getline(std::cin, command);
 
-  std::cout << command << ": command not found\n";
-
+    std::cout << command << ": command not found\n";
+  }
   return 0;
 }
