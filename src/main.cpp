@@ -1,19 +1,28 @@
+#include "helpers.h"
 #include <cstring>
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 int main() {
   // Flush after every std::cout / std:cerr
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
+  cout << unitbuf;
+  cerr << unitbuf;
 
-  std::string command;
+  string command;
 
   while (true) {
-    std::cout << "$ ";
-    std::getline(std::cin, command);
+    cout << "$ ";
+    getline(cin, command);
 
-    std::cout << command << ": command not found\n";
+    string strip_command = strip(command);
+
+    if (strip_command.compare("exit") == 0) {
+      return 0;
+    }
+
+    cout << command << ": command not found\n";
   }
   return 0;
 }
